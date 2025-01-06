@@ -3,26 +3,6 @@
 # JobsManagementApp
 This is an app for manage your jobs, tasks.
 
-## Index
-
- [I. Introduction](#intro)
-
- [II. Description](#descript)
-
-> [1. Idea](#idea)
->
-> [2. Techonlogy](#tech)
->
-> [3. Target User](#user)
->
-> [4. Goal](#goal)
->
-> [5. Function](#funct)
-
-[III. Author](#auth)
-
-[IV. Summary](#sum)
-
 <div id="intro"></div>
 
 ## I. Introduction
@@ -114,7 +94,7 @@ From the above reasons, I would like to propose solutions to use the application
   * Make a report for each completed work of the lecturer.
 
 <div id="auth"></div>
-#install xampp, mysql, import './Database/auto.sql'
+#install xampp, mysql, import './Database/job.sql'
 
 #install .NET 6.0 Desktop Runtime 
 	https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-6.0.11-windows-x64-installer?cid=getdotnetcore
@@ -127,9 +107,6 @@ From the above reasons, I would like to propose solutions to use the application
 	in solution exploere, right click 'Solution 'JobsManagementApp', choose 'Clean Solution'
 	in solution exploere, right click 'Solution 'JobsManagementApp', choose 'Build Solution'
 	in handle bar click run build button to execute app.
-
-#github repository link
-	https://github.com/baokhoa-code/JobsManagementApp
 
 #warning: this application is created in fix height and width, meaning that some device with 
 		screen smaller than 15,6 inch will catch promblem in app rendering
