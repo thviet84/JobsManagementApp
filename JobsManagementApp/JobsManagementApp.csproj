@@ -1,0 +1,94 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="Resource\fonts\Roboto-Black.ttf" />
+		<None Remove="Resource\fonts\Roboto-BlackItalic.ttf" />
+		<None Remove="Resource\fonts\Roboto-Bold.ttf" />
+		<None Remove="Resource\fonts\Roboto-BoldItalic.ttf" />
+		<None Remove="Resource\fonts\Roboto-Italic.ttf" />
+		<None Remove="Resource\fonts\Roboto-Light.ttf" />
+		<None Remove="Resource\fonts\Roboto-LightItalic.ttf" />
+		<None Remove="Resource\fonts\Roboto-Medium.ttf" />
+		<None Remove="Resource\fonts\Roboto-MediumItalic.ttf" />
+		<None Remove="Resource\fonts\Roboto-Regular.ttf" />
+		<None Remove="Resource\fonts\Roboto-Thin.ttf" />
+		<None Remove="Resource\fonts\Roboto-ThinItalic.ttf" />
+		<None Remove="Resource\Icon\award1.png" />
+		<None Remove="Resource\Icon\error.png" />
+		<None Remove="Resource\Icon\ErrorIcon.png" />
+		<None Remove="Resource\Icon\iconApp.ico" />
+		<None Remove="Resource\Icon\info.png" />
+		<None Remove="Resource\Icon\Money.jpg" />
+		<None Remove="Resource\Icon\pencil.png" />
+		<None Remove="Resource\Icon\succes.png" />
+		<None Remove="Resource\Icon\warning.png" />
+		<None Remove="Resource\images\avatar.jpg" />
+		<None Remove="Resource\images\avatar.png" />
+		<None Remove="Resource\images\background.jpg" />
+		<None Remove="Resource\images\backgroundSplash.jpg" />
+		<None Remove="Resource\images\suitcase.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Resource\Icon\info.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+		<PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-beta.401" />
+		<PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
+		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+		<PackageReference Include="MySql.Data" Version="8.0.31" />
+		<PackageReference Include="System.Runtime.Numerics" Version="4.3.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Resource\fonts\Roboto-Black.ttf" />
+		<Resource Include="Resource\fonts\Roboto-BlackItalic.ttf" />
+		<Resource Include="Resource\fonts\Roboto-Bold.ttf" />
+		<Resource Include="Resource\fonts\Roboto-BoldItalic.ttf" />
+		<Resource Include="Resource\fonts\Roboto-Italic.ttf" />
+		<Resource Include="Resource\fonts\Roboto-Light.ttf" />
+		<Resource Include="Resource\fonts\Roboto-LightItalic.ttf" />
+		<Resource Include="Resource\fonts\Roboto-Medium.ttf" />
+		<Resource Include="Resource\fonts\Roboto-MediumItalic.ttf" />
+		<Resource Include="Resource\fonts\Roboto-Regular.ttf" />
+		<Resource Include="Resource\fonts\Roboto-Thin.ttf" />
+		<Resource Include="Resource\fonts\Roboto-ThinItalic.ttf" />
+		<Resource Include="Resource\Icon\award1.png" />
+		<Resource Include="Resource\Icon\error.png" />
+		<Resource Include="Resource\Icon\ErrorIcon.png" />
+		<Resource Include="Resource\Icon\iconApp.ico" />
+		<Resource Include="Resource\Icon\Money.jpg" />
+		<Resource Include="Resource\Icon\pencil.png" />
+		<Resource Include="Resource\Icon\succes.png" />
+		<Resource Include="Resource\Icon\warning.png" />
+		<Resource Include="Resource\images\avatar.jpg" />
+		<Resource Include="Resource\images\avatar.png" />
+		<Resource Include="Resource\images\background.jpg" />
+		<Resource Include="Resource\images\backgroundSplash.jpg" />
+		<Resource Include="Resource\images\suitcase.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="View\User\Statistic\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\.editorconfig" Link=".editorconfig" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="MySql.Data">
+	    <HintPath>bin\Debug\MySql.Data.DLL</HintPath>
+	  </Reference>
+	</ItemGroup>
+</Project>

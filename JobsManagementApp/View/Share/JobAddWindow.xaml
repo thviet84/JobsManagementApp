@@ -1,0 +1,294 @@
+﻿<Window x:Class="JobsManagementApp.View.Share.JobAddWindow"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        FontFamily="Roboto"
+        Height="660"
+        Width="700"
+        Name="JobAddSWindow"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        >
+
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCM}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Border
+        CornerRadius="25"
+        Background="white" Height='660' Width='700'>
+        <Grid Grid.Row='1'>
+            <Grid.RowDefinitions>
+                <RowDefinition Height='40'/>
+                <RowDefinition Height='*'/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row='0'>
+                <Label 
+                    Content="Add Job" 
+                    FontSize="25" 
+                    Foreground="#232360" 
+                    FontWeight="Bold"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Padding="0" Margin='0,10,0,0'/>
+                <Button 
+                    Command="{Binding CloseWindowCM}"
+                    CommandParameter="{Binding ElementName=JobAddSWindow}"
+                    x:Name="close_btn"
+                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                    ToolTip="MaterialDesignFloatingActionButton"
+                    Background="#FFFE5555" BorderBrush="#FFFE5555" 
+                    Width="22" Height="22" 
+                    HorizontalAlignment="Right" Margin='0,18,18.5,0'>
+                    <wpf:PackIcon
+                        Kind="WindowClose"/>
+                </Button>
+
+            </Grid>
+            <Grid Grid.Row='1' Margin='0,20,0,0'>
+                <StackPanel>
+                    <StackPanel Orientation='Horizontal' Height='50'>
+                        <StackPanel Orientation='Horizontal' Margin='55,0,0,0'>
+                            <Label 
+                                Content='Name' 
+                                Foreground="#232360" 
+                                FontWeight="SemiBold" 
+                                VerticalContentAlignment='Center' Width='80'/>
+                            <TextBox
+                                Text="{Binding jobName}"
+                                x:Name="job_name"
+                                FontWeight="DemiBold"
+                                FontSize="12"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                Height="30"
+                                Padding='10,5,10,5'
+                                Width='180'/>
+                        </StackPanel>
+                        <StackPanel Orientation='Horizontal' Margin='60,0,0,0'>
+                            <Label 
+                                Content='Category' 
+                                Foreground="#232360" 
+                                FontWeight="SemiBold" 
+                                VerticalContentAlignment='Center' Width='80' Padding="4,4,4,4"/>
+                            <ComboBox
+                                x:Name="job_category"
+                                ItemsSource="{Binding CategorySource}" 
+                                SelectedItem="{Binding jobCategory}"
+                                DisplayMemberPath="name"
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                Height="30"
+                                FontWeight="DemiBold"
+                                FontSize="14"
+                                Padding='10,5,10,5'
+                                Width='180' VerticalAlignment="Stretch" VerticalContentAlignment="Stretch" />
+                        </StackPanel>
+                    </StackPanel>
+                    <Separator Width='600' Height='1' Margin='0,15,0,15'/>
+                    <StackPanel Orientation='Horizontal' Height='50'>
+                        <StackPanel Orientation='Horizontal' Margin='55,0,0,0'>
+                            <Label 
+                                Content='Start Date' 
+                                Foreground="#232360" 
+                                FontWeight="SemiBold" 
+                                VerticalContentAlignment='Center' Width='80' Padding="4,4,4,4"/>
+                            <DatePicker
+                                x:Name="job_start_date"
+                                FirstDayOfWeek="Sunday"
+                                SelectedDate="{Binding jobStartDate, Mode=TwoWay}"
+                                SelectedDateChanged="check_valid_start_date"
+                                wpf:HintAssist.Hint="Format: MM/dd/yyyy"
+                                Focusable="False"
+                                FontWeight="DemiBold"
+                                FontSize="12"
+                                Padding='10,0,10,0'
+                                Width="180"
+                                Height='30'
+                                Style="{StaticResource MaterialDesignOutlinedDatePicker}" VerticalAlignment="Stretch" />
+                        </StackPanel>
+                        <StackPanel Orientation='Horizontal' Margin='60,0,0,0'>
+                            <Label 
+                                Content='Due Date' 
+                                Foreground="#232360" 
+                                FontWeight="SemiBold" 
+                                VerticalContentAlignment='Center' Width='80'/>
+                            <DatePicker
+                                x:Name="job_due_date"
+                                FirstDayOfWeek="Sunday"
+                                SelectedDate="{Binding jobDueDate, Mode=TwoWay}"
+                                SelectedDateChanged="check_valid_due_date"
+                                wpf:HintAssist.Hint="Format: MM/dd/yyyy"
+                                Focusable="False"
+                                FontWeight="DemiBold"
+                                FontSize="12"
+                                Padding='10,5,10,5'
+                                Width="180"
+                                Height='30'
+                                Style="{StaticResource MaterialDesignOutlinedDatePicker}" VerticalAlignment="Stretch" VerticalContentAlignment="Stretch" />
+                        </StackPanel>
+                    </StackPanel>
+                    <Separator Width='600' Height='1' Margin='0,15,0,15'/>
+                    <StackPanel Orientation='Horizontal' Height='50'>
+                        <StackPanel Orientation='Horizontal' Margin="55,0,0,0">
+                            <Label 
+                                Content='Assignor' 
+                                Foreground="#232360" 
+                                FontWeight="SemiBold" 
+                                VerticalContentAlignment='Center' Width='80' Padding="4,4,4,4"/>
+                            <TextBox
+                                x:Name="job_assignor"
+                                Text="{Binding jobAssignor}"
+                                IsReadOnly = "True" 
+                                FontWeight="DemiBold"
+                                FontSize="10"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                Height="30"
+                                Padding='10,10,10,5'
+                                Width='180' TextChanged="job_assignor_TextChanged_1"/>
+                        </StackPanel>
+                        <StackPanel Orientation='Horizontal' Margin="60,0,0,0">
+                            <Label 
+                                Content='Assignee' 
+                                Foreground="#232360" 
+                                FontWeight="SemiBold" 
+                                VerticalContentAlignment='Center' Width='80' Padding="4,4,4,4"/>
+                            <ComboBox
+                                x:Name="job_assignee"
+                                ItemsSource="{Binding AssigneeSource}" 
+                                SelectedItem="{Binding jobAssignee}"
+                                IsHitTestVisible="{Binding IsAssigneeChanagable}"
+                                wpf:HintAssist.Hint="Can be empty"
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                Height="30"
+                                FontWeight="DemiBold"
+                                FontSize="10"
+                                Padding='10,7.5,10,5'
+                                Width='200' VerticalAlignment="Stretch" VerticalContentAlignment="Stretch">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock><Run Text="{Binding id}" /></TextBlock>
+                                            <TextBlock Text="-"/>
+                                            <TextBlock><Run Text="{Binding type}" /></TextBlock>
+                                            <TextBlock Text="-"/>
+                                            <TextBlock><Run Text="{Binding name}" /></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+                    <Separator Width='600' Height='1' Margin='0,15,0,15'/>
+                    <StackPanel Orientation='Horizontal' Height='50'>
+                        <StackPanel Orientation='Horizontal' Margin="55,0,0,0">
+                            <Label 
+                                Content='Dependency' 
+                                Foreground="#232360" 
+                                FontWeight="SemiBold" 
+                                VerticalContentAlignment='Center' Width='80' Padding="4,4,4,4"/>
+                            <ComboBox
+                                x:Name="job_dependency"
+                                ItemsSource="{Binding DependencySource}" 
+                                SelectedItem="{Binding jobDependency}"
+                                wpf:HintAssist.Hint="Can be empty"
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                Height="30"
+                                FontWeight="DemiBold"
+                                FontSize="11"
+                                Padding='10,7.5,10,5'
+                                Width='180' VerticalAlignment="Stretch" VerticalContentAlignment="Stretch" >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock>
+                                            <Run Text="{Binding id}" />
+                                            </TextBlock>
+                                            <TextBlock Text=" - "/>
+                                            <TextBlock>
+                                            <Run Text="{Binding name}" />
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Orientation='Horizontal' Margin="60,0,0,0">
+                            <Label 
+                                Content='Require Hour' 
+                                Foreground="#232360" 
+                                FontWeight="SemiBold" 
+                                VerticalContentAlignment='Center' Width='80' Padding="4,4,4,4"/>
+                            <TextBox
+                                x:Name="job_require_hour"
+                                Text="{Binding jobRequire_hour}"
+                                wpf:HintAssist.Hint="Number only"
+                                PreviewTextInput="PreviewTextInput"
+                                FontWeight="DemiBold"
+                                FontSize="12"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                Height="30"
+                                Padding='10,5,10,5'
+                                Width='180'/>
+                        </StackPanel>
+                    </StackPanel>
+                    <Separator Width='600' Height='1' Margin='0,15,0,15'/>
+                    <StackPanel Orientation='Horizontal'>
+                        <StackPanel Orientation='Vertical'>
+                            <Label 
+                                Content='Job Description' 
+                                Foreground="#232360" 
+                                FontWeight="SemiBold" 
+                                HorizontalContentAlignment='Center' 
+                                VerticalContentAlignment='Center' Width='90' Padding='0,0,0,0' HorizontalAlignment="Left" Margin="57,0,0,15" FontSize="12.3"/>
+                            <TextBox
+                                x:Name="job_description"
+                                Text="{Binding jobDescription}"
+                                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                Height="170"
+                                TextWrapping="Wrap" Width='580' Margin='60,0,0,0'
+                                         />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                        <Button
+                           Command="{Binding ClearInforCM}"
+                            Width="160" 
+                            Height="45" 
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            wpf:ButtonAssist.CornerRadius="10"
+                            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" 
+                            BorderBrush="#FF2CD73D" 
+                            Background="#FF2CD73D"
+                            FontSize="18"
+                            FontWeight="Bold"
+                            Content="Clear" Padding="0,0,0,0" Grid.IsSharedSizeScope="True" VerticalAlignment="Center" Margin="60,0,0,0"/>
+                        <Button
+                            Command="{Binding AddJobCM}"
+                            x:Name="job_add_btn"
+                            Width="160" 
+                            Height="45" 
+                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            wpf:ButtonAssist.CornerRadius="10"
+                            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" 
+                            BorderBrush="#FF5051F9" 
+                            Background="#FF5051F9"
+                            FontSize="18"
+                            FontWeight="Bold"
+                            Content="Add" Padding="0,0,0,0" Grid.IsSharedSizeScope="True" VerticalAlignment="Center" Margin="260,0,0,0"/>
+                    </StackPanel>
+                    
+
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
